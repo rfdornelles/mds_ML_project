@@ -7,7 +7,7 @@ df1 <- read.table("data-raw/RCP85_MIDYR_CONC.DAT", skip = 40)
                     "HCFC_22", "HCFC_141B", "HCFC_142B", "HALON1211", "HALON1202", "HALON1301",
                     "HALON2402", "CH3BR", "CH3CL")
 
-readr::write_csv(df1, "data-raw/RCP85_MIDYR_CONC.csv")
+readr::write_csv(df1, "RCP85_MIDYR_CONC.csv")
 
 
 df2 <- read.table("data-raw/RCP3PD_MIDYR_CONC.DAT", skip = 40) 
@@ -19,4 +19,4 @@ df2 <- read.table("data-raw/RCP3PD_MIDYR_CONC.DAT", skip = 40)
                      "HCFC_22", "HCFC_141B", "HCFC_142B", "HALON1211", "HALON1202", "HALON1301",
                      "HALON2402", "CH3BR", "CH3CL")
 
-readr::write_csv(df2, "data-raw/RCP3PD_MIDYR_CONC.csv")
+readr::write_csv(df2, "RCP3PD_MIDYR_CONC.csv")
