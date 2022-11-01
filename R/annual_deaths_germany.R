@@ -41,6 +41,12 @@ db_annual_deaths_clean |>
 db_annual_deaths_clean_germany <- db_annual_deaths_clean |> 
   dplyr::filter(entity == "Germany")
 
+# filtering years:
+# All datasets need to start in year 2000 and end in year 2021
+
+db_annual_deaths_clean_germany <- db_annual_deaths_clean_germany |> 
+  dplyr::filter(year >= 2000 | year <= 2021)
+
 
 # Plot --------------------------------------------------------------------
 library(ggplot2)
