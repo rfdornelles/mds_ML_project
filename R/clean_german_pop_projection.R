@@ -37,12 +37,16 @@ db_projection_clean <- db_projection_clean |>
     # group the ages
     # break in discrete intervals - mocking categories just to try
     age = dplyr::case_when(
-      age <= 15 ~ "under 15",
-      age > 15 & age <= 30 ~ "15 to 30",
-      age > 30 & age <= 65 ~ "30 to 65",
-      age > 65 & age <= 80 ~ "65 to 80",
-      age > 80 ~ "80+",
-      TRUE ~ as.character(age)
+      # age <= 15 ~ "under 15",
+      # age > 15 & age <= 30 ~ "15 to 30",
+      # age > 30 & age <= 65 ~ "30 to 65",
+      # age > 65 & age <= 80 ~ "65 to 80",
+      # age > 80 ~ "80+",
+      # TRUE ~ as.character(age)
+      age <= 25 ~ "age_0_25",
+      age > 25 & age <= 50 ~ "age_26_50",
+      age > 50 & age <= 75 ~ "age_51_75",
+      age > 75 ~ "age_75_100" 
     )
   ) 
 
