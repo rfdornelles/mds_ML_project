@@ -35,7 +35,7 @@ db_projection_clean <- db_projection_clean |>
     age = as.numeric(age), 
     
     # group the ages
-    # break in discrete intervals
+    # break in discrete intervals - mocking categories just to try
     age = dplyr::case_when(
       age <= 15 ~ "under 15",
       age > 15 & age <= 30 ~ "15 to 30",
@@ -49,4 +49,14 @@ db_projection_clean <- db_projection_clean |>
 
 # pivot to have years in the rows
 
+db_projection_clean <- db_projection_clean |> 
+  tidyr::pivot_longer(cols = dplyr::starts_with("2"), 
+                      names_to = "year") 
 
+
+|> 
+  tidyr::pivot_wider(names_from = "gender", 
+                     values_from = "value") |> 
+  tidyr::unnest(c(Male, Female))
+
+# pivot to have age in the columns
