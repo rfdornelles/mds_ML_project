@@ -70,3 +70,8 @@ db_projection_clean <- db_projection_clean |>
     year = stringr::str_sub(year, 0, 4)
   )
 
+
+# Exporting ---------------------------------------------------------------
+
+readr::write_csv(db_projection_clean, 
+                 file = "data/Projected German Population 2050.csv")
