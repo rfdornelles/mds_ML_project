@@ -53,10 +53,20 @@ db_projection_clean <- db_projection_clean |>
   tidyr::pivot_longer(cols = dplyr::starts_with("2"), 
                       names_to = "year") 
 
+# merging the similar categories
+db_projection_clean <- db_projection_clean |> 
+  dplyr::group_by(gender, age, year) |> 
+  dplyr::summarise(value = sum(value, na.rm = TRUE), .groups = "drop")
 
-|> 
-  tidyr::pivot_wider(names_from = "gender", 
-                     values_from = "value") |> 
-  tidyr::unnest(c(Male, Female))
 
 # pivot to have age in the columns
+db_projection_clean <- db_projection_clean |> 
+  tidyr::pivot_wider(names_from = c(age, gender), values_from = value)
+
+
+# cleaning year
+db_projection_clean <- db_projection_clean |> 
+  dplyr::mutate(
+    year = stringr::str_sub(year, 0, 4)
+  )
+
