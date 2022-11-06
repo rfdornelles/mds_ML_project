@@ -27,7 +27,7 @@ german_deaths <- german_deaths |>
 
 # drop the Age column
 german_deaths <- german_deaths |> 
-  dplyr::select(-Age) |>
+  dplyr::select(-Age) 
 
 
 # group and sum
@@ -39,6 +39,12 @@ german_deaths <- german_deaths |>
   )
 
 # pivot wider
-german_deaths |> 
+german_deaths <- german_deaths |> 
   tidyr::pivot_wider(names_from = "Age_Demographic", 
                      values_from = dplyr::ends_with("Germans"))
+
+
+# Export ------------------------------------------------------------------
+
+readr::write_csv(german_deaths, "data/german_deaths.csv")
+
