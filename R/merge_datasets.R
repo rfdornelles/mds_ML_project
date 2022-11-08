@@ -1,9 +1,14 @@
 # testing the merged datased
 
+
+# Import all data ---------------------------------------------------------
+
+
 # temperature
 temp_df <- readr::read_csv("data-raw/nasa_temperature.csv") |> 
   janitor::clean_names() |> 
-  dplyr::select(year, glob, n_hem, x24n_90n)
+  dplyr::select(year, glob, n_hem, x24n_90n) |> 
+  dplyr::mutate(year = as.numeric(year))
 
 # german pop
 
@@ -15,7 +20,9 @@ wb_pop <- wb_pop |>
   dplyr::select(-1:-4) |> 
   tidyr::pivot_longer(
     col = dplyr::everything(), 
-    values_to = "population")
+    values_to = "population",
+    names_to = "year") |> 
+  dplyr::mutate(year = as.numeric(year))
 
 # deaths by heat/cold
 
@@ -31,7 +38,6 @@ db_annual_deaths <- db_annual_deaths |>
                 "Deaths - Chronic respiratory diseases - Sex: Both - Age: All Ages (Number)"
   ) |> 
   janitor::clean_names() |> 
-  # names()
   dplyr::rename(
     "qnt_death_heat_cold_exposure" = 4,
     "qnt_death_lower_respiratory_infections" = 5,
@@ -44,11 +50,22 @@ db_annual_deaths <- db_annual_deaths |>
   dplyr::group_by(year) |> 
   dplyr::summarise(
     dplyr::across(.fns = sum, na.rm = TRUE)
-  )
+  )  |> 
+  dplyr::mutate(year = as.numeric(year))
 
 # deaths germany
 deaths_germany <- readr::read_csv("data/german_deaths.csv") |> 
-  janitor::clean_names()
+  janitor::clean_names()  |> 
+  dplyr::mutate(year = as.numeric(year))
+
 
 # projected pop (predict?)
-readr::read_csv("data/Projected German Population 2050.csv")
+proj_pop_germany <- readr::read_csv(
+  "data/Projected German Population 2050.csv")  |> 
+  dplyr::mutate(year = as.numeric(year))
+
+
+# merge all ---------------------------------------------------------------
+
+wb_pop |> 
+  dplyr::left_join(temp_df)
