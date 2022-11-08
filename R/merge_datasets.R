@@ -67,5 +67,9 @@ proj_pop_germany <- readr::read_csv(
 
 # merge all ---------------------------------------------------------------
 
-wb_pop |> 
-  dplyr::left_join(temp_df)
+karon_dataset <- wb_pop |> 
+  dplyr::left_join(temp_df) |> 
+  dplyr::left_join(db_annual_deaths) |> 
+  dplyr::left_join(deaths_germany)
+
+readr::write_csv(karon_dataset, "data/karon_dataset.csv")
