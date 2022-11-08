@@ -64,13 +64,18 @@ proj_pop_germany <- readr::read_csv(
   "data/Projected German Population 2050.csv")  |> 
   dplyr::mutate(year = as.numeric(year))
 
+#  temperature rcp 45 -----------------------------------------------------
+
+temp_rcf_45 <- readr::read_csv("data/temp_rcp_45.csv")
+
 
 # merge all ---------------------------------------------------------------
 
 karon_dataset <- wb_pop |> 
   dplyr::left_join(temp_df) |> 
   dplyr::left_join(db_annual_deaths) |> 
-  dplyr::left_join(deaths_germany)
+  dplyr::left_join(deaths_germany) |> 
+  dplyr::left_join(temp_rcf_45)
 
 readr::write_csv(karon_dataset, "data/karon_dataset.csv")
 
@@ -83,3 +88,4 @@ karon_clean <- karon_dataset |>
 # karon_clean |> tibble::view()
 
 readr::write_csv(karon_clean, "data/karon_clean.csv")
+
