@@ -1,4 +1,4 @@
-# testing the merged datased
+# testing the merged datasets
 
 
 # Import all data ---------------------------------------------------------
@@ -68,6 +68,10 @@ proj_pop_germany <- readr::read_csv(
 
 temp_rcf_45 <- readr::read_csv("data/temp_rcp_45.csv")
 
+# emissions 
+
+emissions_rcp85 <- readr::read_csv("data/RCP85_MIDYR_CONC.csv") |> 
+  dplyr::rename(year = YEARS)
 
 # merge all ---------------------------------------------------------------
 
@@ -75,7 +79,8 @@ karon_dataset <- wb_pop |>
   dplyr::left_join(temp_df) |> 
   dplyr::left_join(db_annual_deaths) |> 
   dplyr::left_join(deaths_germany) |> 
-  dplyr::left_join(temp_rcf_45)
+  dplyr::left_join(temp_rcf_45) |> 
+  dplyr::left_join(emissions_rcp85)
 
 readr::write_csv(karon_dataset, "data/karon_dataset.csv")
 
