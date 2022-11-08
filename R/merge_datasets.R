@@ -73,3 +73,13 @@ karon_dataset <- wb_pop |>
   dplyr::left_join(deaths_germany)
 
 readr::write_csv(karon_dataset, "data/karon_dataset.csv")
+
+
+# clean years: 2000 to 2021 -----------------------------------------------
+
+karon_clean <- karon_dataset |> 
+  dplyr::filter(year >= 2000 & year <= 2021)
+
+# karon_clean |> tibble::view()
+
+readr::write_csv(karon_clean, "data/karon_clean.csv")
