@@ -85,7 +85,7 @@ karon_dataset <- wb_pop |>
 readr::write_csv(karon_dataset, "data/karon_dataset.csv")
 
 
-# clean years: 2000 to 2021 -----------------------------------------------
+# clean years: 1990 to 2021 -----------------------------------------------
 
 karon_clean <- karon_dataset |> 
   dplyr::filter(year >= 1990 & year <= 2019)
