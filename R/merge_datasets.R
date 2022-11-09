@@ -78,7 +78,7 @@ emissions_rcp85 <- readr::read_csv("data/RCP85_MIDYR_CONC.csv") |>
 karon_dataset <- wb_pop |> 
   dplyr::left_join(temp_df) |> 
   dplyr::left_join(db_annual_deaths) |> 
-  dplyr::left_join(deaths_germany) |> 
+ # dplyr::left_join(deaths_germany) |> 
   dplyr::left_join(temp_rcf_45) |> 
   dplyr::left_join(emissions_rcp85)
 
@@ -88,7 +88,7 @@ readr::write_csv(karon_dataset, "data/karon_dataset.csv")
 # clean years: 2000 to 2021 -----------------------------------------------
 
 karon_clean <- karon_dataset |> 
-  dplyr::filter(year >= 2000 & year <= 2021)
+  dplyr::filter(year >= 1980 & year <= 2019)
 
 # karon_clean |> tibble::view()
 
