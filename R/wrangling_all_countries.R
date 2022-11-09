@@ -153,11 +153,15 @@ db_annual_deaths <- db_annual_deaths |>
     "qnt_death_chronic_respiratory_diseases" = 7
   )
 
-temp_countries |> 
+karon2 <- temp_countries |> 
   dplyr::left_join(wb_pop) |> 
   dplyr::left_join(db_annual_deaths) |> 
   dplyr::select(year, 
-                country, temp, population, qnt_death_heat_cold_exposure)
+                country, temp, population, qnt_death_heat_cold_exposure) |> 
+  na.omit() 
+
+
+readr::write_csv(karon2, "data/karon2.csv") 
 
 # |> 
 #   tibble::view() |> 
