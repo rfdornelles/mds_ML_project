@@ -88,7 +88,7 @@ readr::write_csv(karon_dataset, "data/karon_dataset.csv")
 # clean years: 2000 to 2021 -----------------------------------------------
 
 karon_clean <- karon_dataset |> 
-  dplyr::filter(year >= 1980 & year <= 2019)
+  dplyr::filter(year >= 1990 & year <= 2019)
 
 # karon_clean |> tibble::view()
 
