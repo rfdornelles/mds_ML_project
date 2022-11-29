@@ -160,6 +160,13 @@ karon2 <- temp_countries |>
                 country, temp, population, qnt_death_heat_cold_exposure) |> 
   na.omit() 
 
+karon2 <- karon2 |> 
+  dplyr::group_by(country) |> 
+  dplyr::arrange(country, year) |> 
+  dplyr::mutate(
+    temp_diff = temp - dplyr::lag(temp, n = 1, default = NA)
+  ) |> 
+  dplyr::filter(!is.na(temp_diff))
 
 readr::write_csv(karon2, "data/karon2.csv") 
 
