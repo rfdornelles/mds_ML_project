@@ -3,8 +3,6 @@
 boundaries <- readr::read_csv("data-raw/country-boundingboxes.csv") |> 
   dplyr::select(1, 3:6)
 
-boundaries
-
 ###
 
 ncfile <- "data-raw/mean_Tmean_Yearly_rcp45_mean_v1.0.nc"
