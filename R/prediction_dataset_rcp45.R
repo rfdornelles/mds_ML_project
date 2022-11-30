@@ -116,7 +116,7 @@ temp_countries <- temp_countries |>
   dplyr::filter(year > 2019)
 
 ## merge population
-wb_pop <- readr::read_csv("data-raw/wb_Population_projection.csv") 
+wb_pop <- readr::read_csv("data-raw/wb_PopulationProjection.csv") 
 
 wb_pop <- wb_pop |> 
   dplyr::rename(country = `Country Name`, code = `Country Code`) |> 
