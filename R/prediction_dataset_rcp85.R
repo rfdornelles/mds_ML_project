@@ -161,13 +161,13 @@ karon_pred <- temp_countries |>
                 country, temp, population) |> 
   na.omit() 
 
-karon_pred <- karon_pred |> 
-  dplyr::group_by(country) |> 
-  dplyr::arrange(country, year) |> 
-  dplyr::mutate(
-    temp_diff = temp - dplyr::lag(temp, n = 1, default = NA)
-  ) |> 
-  dplyr::filter(!is.na(temp_diff))
+# karon_pred <- karon_pred |> 
+#   dplyr::group_by(country) |> 
+#   dplyr::arrange(country, year) |> 
+#   dplyr::mutate(
+#     temp_diff = temp - dplyr::lag(temp, n = 1, default = NA)
+#   ) |> 
+#   dplyr::filter(!is.na(temp_diff))
 
 readr::write_csv(karon_pred, "data/pred_y_2022_2050_rcp85.csv") 
 

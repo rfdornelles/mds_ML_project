@@ -158,14 +158,14 @@ karon_pred <- temp_countries |>
   dplyr::select(year, 
                 country, temp, population) |> 
   na.omit() 
-
-karon_pred <- karon_pred |> 
-  dplyr::group_by(country) |> 
-  dplyr::arrange(country, year) |> 
-  dplyr::mutate(
-    temp_diff = temp - dplyr::lag(temp, n = 1, default = NA)
-  ) |> 
-  dplyr::filter(!is.na(temp_diff))
+# 
+# karon_pred <- karon_pred |> 
+#   dplyr::group_by(country) |> 
+#   dplyr::arrange(country, year) |> 
+#   dplyr::mutate(
+#     temp_diff = temp - dplyr::lag(temp, n = 1, default = NA)
+#   ) |> 
+#   dplyr::filter(!is.na(temp_diff))
 
 # making sure that the datasets are comparable
 country_list <- readr::read_csv("data/karon2.csv") |> 
