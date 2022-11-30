@@ -167,6 +167,14 @@ karon_pred <- karon_pred |>
   ) |> 
   dplyr::filter(!is.na(temp_diff))
 
+# making sure that the datasets are comparable
+country_list <- readr::read_csv("data/karon2.csv") |> 
+  dplyr::pull(country) |> 
+  unique()
+
+karon_pred <- karon_pred |> 
+  dplyr::filter(country %in% country_list)
+
 readr::write_csv(karon_pred, "data/pred_y_2022_2050_rcp45.csv") 
 
 # |> 
