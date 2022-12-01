@@ -20,8 +20,6 @@ Please check the Colab Notebook for more details and the R folder to better unde
 
 ## Authors (alphabetical)
 
-Fernando Corral Lozada - [f.corral\@students.hertie-school.org](mailto:f.corral@students.hertie-school.org){.email}
-
+Fernando Corral Lozada - [f.corral\@students.hertie-school.org](mailto:f.corral@students.hertie-school.org)
 Paul Sharratt - [p.sharratt\@students.hertie-school.org](mailto:p.sharratt@students.hertie-school.org)
-
 Rodrigo Filippi Dornelles - [r.Dornelles\@students.hertie-school.org](mailto:r.Dornelles@students.hertie-school.org)
