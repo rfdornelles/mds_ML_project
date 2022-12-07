@@ -1,0 +1,11 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/980735/9c145499ed3b42a4a2ee2972b0444d03
+bundleId: https://api.rpubs.com/api/v1/document/980735/9c145499ed3b42a4a2ee2972b0444d03
+url: http://rpubs.com/rfdornelles/980735
+when: 1670455463.20683
+lastSyncTime: 1670455463.20685
