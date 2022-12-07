@@ -14,7 +14,7 @@ Please check the Colab Notebook for more details and the R folder to better unde
 
 ![Projection using Gradient Boost](img/gradient_boost.png)
 
-#### Projectiong using XGBoost
+#### Projection using XGBoost
 
 ![Projection using XG Boost](img/xgboost.png)
 
